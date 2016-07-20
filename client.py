@@ -68,11 +68,14 @@ def user_urls(username):
 
 def new_user(username, firstname, lastname, password):
     response = urllib2.urlopen("http://localhost:4567/json/newuser?username="  + username + "&fisrtname=" + firstname + "&lastname=" + lastname + "&password=" + password)
+    url = ("http://localhost:4567/json/newuser?username="  + username + "&fisrtname=" + firstname + "&lastname=" + lastname + "&password=" + password)
     print ("SUCCESSFULLY!!!")
+
 def new_url(url, username):
-    response = urllib2.urlopen(
-        "http://localhost:4567/json/newurl?url=" + url + "&username=" + username)
-    print("SUCCESSFULLY")
+    response = urllib2.urlopen("http://localhost:4567/json/newurl?url=" + url + "&username=" + username)
+    data = simplejson.load(response)
+    print(data)
+    print("SUCCESSFULLY!!!")
 
 
 
@@ -85,27 +88,38 @@ def main():
         select = input('\nSELECT OPTION: ')
         if (select == "1"):
             all_urls()
+
         if (select == "2"):
             id = str(input("ENTER ID:"))
             short(id)
+
         if (select == "3"):
             id = str(input("ENTER ID:"))
             info(id)
+
         if (select == "4"):
             all_users()
+
         if (select == "5"):
             username = str(input("ENTER USER:"))
             user(username)
+
         if (select == "6"):
             username = str(input("ENTER USER:"))
             user_urls(username)
+
         if (select == "7"):
             username = str(input("ENTER USERNAME:"))
-            user_urls(username)
+            firsname = str(input("ENTER FIRSTNAME:"))
+            lastname = str(input("ENTER LASTNAME:"))
+            password = str(input("ENTER PASSWORD:"))
+            new_user(username, firsname, lastname, password)
+
         if (select == "8"):
             url = str(input("ENTER URL:"))
             username  = str(input("ENTER USERNAME:"))
             new_url(url, username)
+
         if (select == "0"):
             print('\nTHANK YOU FOR USING OUR SERVICES!')
             break
