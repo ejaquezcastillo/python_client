@@ -1,3 +1,7 @@
+import os
+
+import time
+
 try:
     import urllib.request as urllib2
 except ImportError:
@@ -7,36 +11,64 @@ import simplejson
 
 def printMenu():
     print("WELCOME TO URL_SHORT")
-    print("Option:")
-    print("1: Obterner")
-    print("2: Actualizar Estudiante")
-    print("3: Obtener Estudiante dada una matricula")
-    print("4: Borrar Estudiante")
+    print("SELECT OPTION")
+    print("1: ALL URLS")
+    print("2: URL SHORT FROM ID")
+    print("3: INFO FROM URL SHORT ID")
+    print("4: All USERS")
     print("5: Lista de Estudiantes")
     print("0: Cerrar Cliente")
 
 
-response = urllib2.urlopen("http://localhost:4567/json/admin/urls")
-data = simplejson.load(response)
-print (data)
+def all_urls():
+    response = urllib2.urlopen("http://localhost:4567/json/allurls")
+    data = simplejson.load(response)
+    print (data)
+    for i in data:
+        print(i)
+    time.sleep(6)
+
+def short(id):
+    response = urllib2.urlopen("http://localhost:4567/json/original/"+id)
+    data = simplejson.load(response)
+    print(data)
+    time.sleep(6)
+
+def info(id):
+    response = urllib2.urlopen("http://localhost:4567/json/url/"+id)
+    data = simplejson.load(response)
+    print(data)
+    time.sleep(6)
+
+def all_users():
+    response = urllib2.urlopen("http://localhost:4567/json/allusers")
+    data = simplejson.load(response)
+    print(data)
+    for i in data:
+        print(i)
+    time.sleep(6)
+
 
 def main():
 
     while True:
+        print("=======================================================================================================")
         printMenu()
-        select = input('\nDigite una de las opciones: ')
+        select = input('\nSELECT OPTION: ')
         if (select == "1"):
-            ()
+            all_urls()
         if (select == "2"):
-            ()
+            id = str(input("ENTER ID:"))
+            short(id)
         if (select == "3"):
-            ()
+            id = str(input("ENTER ID:"))
+            info(id)
         if (select == "4"):
-            ()
+            all_users()
         if (select == "5"):
             ()
         if (select == "0"):
-            print('\n!Thank you for using our services!')
+            print('\nTHANK YOU FOR USING OUR SERVICES!')
             break
 
 
