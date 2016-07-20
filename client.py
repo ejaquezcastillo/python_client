@@ -8,7 +8,7 @@ import simplejson
 #MENU
 def printMenu():
     print("WELCOME TO URL_SHORT")
-    print("SELECT OPTION")
+    print("\nSELECT OPTION")
     print("1: ALL URLS")
     print("2: URL SHORT FROM ID")
     print("3: INFO FROM URL SHORT ID")
@@ -69,17 +69,14 @@ def user_urls(username):
 
 #FUNCION NO.7. - CREA UN NUEVO USUARIO DADO USERNAME, FIRSTNAME, LASTNAME, PASSWORD
 def new_user(username, firstname, lastname, password):
-    response = urllib2.urlopen("http://localhost:4567/json/newuser?username="  + username + "&fisrtname=" + firstname + "&lastname=" + lastname + "&password=" + password)
-    url = ("http://localhost:4567/json/newuser?username="  + username + "&fisrtname=" + firstname + "&lastname=" + lastname + "&password=" + password)
-    print ("SUCCESSFULLY!!!")
-
-#FUNCION NO.8 - DEVUELVE UN URL-SHORT DADO UN URL, USERNAME
+    response = urllib2.urlopen("http://localhost:4567/json/newuser?username="  + username + "&firstname=" + firstname + "&lastname=" + lastname + "&password=" + password)
+    print ("\nSUCCESSFULLY!!!")
+    time.sleep(6)
+#FUNCION NO.8 - CREAR UN NUEVO URL A UN USERNAME
 def new_url(url, username):
     response = urllib2.urlopen("http://localhost:4567/json/newurl?url=" + url + "&username=" + username)
-    data = simplejson.load(response)
-    print(data)
-    print("SUCCESSFULLY!!!")
-
+    print("\nSUCCESSFULLY!!!")
+    time.sleep(6)
 
 
 #FUNCION SELECTOR DEL MENU
@@ -88,7 +85,7 @@ def main():
     while True:
         print("=======================================================================================================")
         printMenu()
-
+        select = input('\nSELECT OPTION:')
         #ALL URLS
         if (select == "1"):
             all_urls()
