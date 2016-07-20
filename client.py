@@ -1,4 +1,7 @@
+import os
 import time
+import subprocess
+import platform
 try:
     import urllib.request as urllib2
 except ImportError:
@@ -17,7 +20,7 @@ def printMenu():
     print("6: USER URLS HISTORY")
     print("7: NEW USER")
     print("8: NEW SHORT URL")
-    print("0: Cerrar Cliente")
+    print("0: CLOSE CLIENT")
 
 #FUNCION NO.1 - DEVUELVE TODOS LOS URLS CONSULTADOS
 def all_urls():
@@ -72,12 +75,12 @@ def new_user(username, firstname, lastname, password):
     response = urllib2.urlopen("http://localhost:4567/json/newuser?username="  + username + "&firstname=" + firstname + "&lastname=" + lastname + "&password=" + password)
     print ("\nSUCCESSFULLY!!!")
     time.sleep(6)
-#FUNCION NO.8 - CREAR UN NUEVO URL A UN USERNAME
+
+# FUNCION NO.8 - CREAR UN NUEVO URL A UN USERNAME
 def new_url(url, username):
     response = urllib2.urlopen("http://localhost:4567/json/newurl?url=" + url + "&username=" + username)
     print("\nSUCCESSFULLY!!!")
     time.sleep(6)
-
 
 #FUNCION SELECTOR DEL MENU
 def main():
