@@ -48,6 +48,12 @@ def all_users():
         print(i)
     time.sleep(6)
 
+def user(username):
+    response = urllib2.urlopen("http://localhost:4567/json/user/" +username)
+    data = simplejson.load(response)
+    print(data)
+    time.sleep(6)
+
 
 def main():
 
@@ -66,7 +72,8 @@ def main():
         if (select == "4"):
             all_users()
         if (select == "5"):
-            ()
+            username = str(input("ENTER USER:"))
+            user(username)
         if (select == "0"):
             print('\nTHANK YOU FOR USING OUR SERVICES!')
             break
