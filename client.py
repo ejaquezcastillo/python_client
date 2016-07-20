@@ -15,8 +15,11 @@ def printMenu():
     print("1: ALL URLS")
     print("2: URL SHORT FROM ID")
     print("3: INFO FROM URL SHORT ID")
-    print("4: All USERS")
-    print("5: Lista de Estudiantes")
+    print("4: ALL USERS")
+    print("5: USER INFO")
+    print("6: USER URLS HISTORY")
+    print("7: NEW USER")
+    print("8: NEW SHORT URL")
     print("0: Cerrar Cliente")
 
 
@@ -55,6 +58,20 @@ def user(username):
     time.sleep(6)
 
 
+def user_urls(username):
+    response = urllib2.urlopen("http://localhost:4567/json/" + username +"/urls")
+    data = simplejson.load(response)
+    print(data)
+    for i in data:
+        print(i)
+    time.sleep(6)
+
+def new_user(username, firstname, lastname, password):
+
+def new_url(url, username):
+
+
+
 def main():
 
     while True:
@@ -74,6 +91,16 @@ def main():
         if (select == "5"):
             username = str(input("ENTER USER:"))
             user(username)
+        if (select == "6"):
+            username = str(input("ENTER USER:"))
+            user_urls(username)
+        if (select == "7"):
+            username = str(input("ENTER USERNAME:"))
+            user_urls(username)
+        if (select == "8"):
+            url = str(input("ENTER URL:"))
+            username  = str(input("ENTER USERNAME:"))
+            new_url(url, username)
         if (select == "0"):
             print('\nTHANK YOU FOR USING OUR SERVICES!')
             break
@@ -81,3 +108,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
