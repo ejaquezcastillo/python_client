@@ -67,8 +67,13 @@ def user_urls(username):
     time.sleep(6)
 
 def new_user(username, firstname, lastname, password):
-
+    response = urllib2.urlopen("http://localhost:4567/json/newuser?username="  + username + "&fisrtname=" + firstname + "&lastname=" + lastname + "&password=" + password)
+    print ("SUCCESSFULLY!!!")
 def new_url(url, username):
+    response = urllib2.urlopen(
+        "http://localhost:4567/json/newurl?url=" + url + "&username=" + username)
+    print("SUCCESSFULLY")
+
 
 
 
