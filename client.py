@@ -120,7 +120,7 @@ def main():
             url = str(input("ENTER URL:"))
             username  = str(input("ENTER USERNAME:"))
             new_url(url, username)
-
+        #CLOSE
         if (select == "0"):
             print('\nTHANK YOU FOR USING OUR SERVICES!')
             break
